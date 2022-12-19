@@ -12,8 +12,8 @@ class Pokemon {
   constructor(url) {
     this.url = url;
   }
-  crearDiv() {
-    fetch(this.url)
+  async crearDiv() {
+    await fetch(this.url)
       .then((response) => response.json())
       .then((data) => {
         this.nombre = data.name;
@@ -106,12 +106,10 @@ class Pokemon {
 }
 
 let pkm;
-let lista = [];
+let lista = new Array(722);
 for (let i = 1; i < 722; i++) {
   pkm = new Pokemon("https://pokeapi.co/api/v2/pokemon/" + i);
-  console.log(pkm.nombre);
-  setTimeout(() => {}, 1000);
-  lista.push(pkm);
+  lista[i - 1] = pkm;
 }
 
 for (let i = 0; i < lista.length; i++) {
