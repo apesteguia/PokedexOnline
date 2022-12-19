@@ -22,7 +22,6 @@ class Pokemon {
         this.tipos = data.types; //this.tipos[0].type.name
         this.habilidades = data.abilities; //this.habilidades[0].ability.name
         this.stats = data.stats; //this.stats[0].stat.name && [0].base_stat
-        console.log(this.nombre);
         let div = document.createElement("div");
         let divTipos = document.createElement("div");
         let n = document.createElement("h1");
@@ -97,10 +96,35 @@ class Pokemon {
           divTipos.appendChild(tipo[i]);
         }
         divTipos.classList.add("divtipos");
+
+        let main = document.createElement("div");
+        let sub = document.createElement("div");
+        let but = document.createElement("button");
+        main.classList.add("invisible");
+        sub.classList.add("invisible");
+        but.classList.add("boton");
+        but.innerText = "X";
+        but.addEventListener("click", () => {
+          main.classList.add("invisible");
+          main.classList.remove("main");
+        });
+        div.addEventListener("click", () => {
+          main.classList.remove("invisible");
+          sub.classList.remove("invisible");
+          main.classList.add("main");
+          sub.classList.add("pop");
+          console.log("hola");
+        });
+        sub.appendChild(but);
+        let n2 = n;
+        sub.appendChild(n2);
+        main.appendChild(sub);
+        this.app.appendChild(main);
+
         div.appendChild(divTipos);
         div.appendChild(n);
+
         this.app.appendChild(div);
-        this.valor = 1;
       });
   }
 }
